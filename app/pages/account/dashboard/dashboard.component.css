@@ -1,0 +1,47 @@
+.nav-bar {
+    margin-top: 35px;
+    padding: 0;
+    font-family: "Montserrat", sans-serif;
+    font-size: 16px;
+    display: flex;
+    width: 270px;
+}
+
+#main {
+    font-size: 20px;
+    font-weight: 600;
+    padding: 20px;
+}
+
+ul {
+    list-style-type: none;
+    margin-top: 20px;
+    padding: 0px;
+    width: 250px;
+    border: 1px solid #E6E6E6;
+    border-radius: 2px;
+    height: fit-content;
+}
+
+li a {
+    display: block;
+    color: #555;
+    padding: 20px 16px;
+    text-decoration: none;
+}
+
+li a:active {
+    background-color: #555;
+    color: black;
+    border-right: 3px black;
+}
+
+li a:hover:not(.active) {
+    background-color: #cccccc;
+    color: black;
+    border-left: 3px black solid;
+}
+
+i {
+    padding: 10px;
+}

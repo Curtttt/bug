@@ -1,0 +1,54 @@
+<div class="recent-order">
+    <div class="row top">
+        <div class="col-md-7">
+            <div class="client">
+            <div class="st">
+                <img class="ellipse" src="/assets/avatar.jpg" />
+                <div class="name">Trần Ngọc Phương Mai</div>
+                <div class="role">Khách hàng</div>
+                <a class="change">Chỉnh sửa thông tin</a>
+            </div>
+        </div></div>
+
+        <div class="col-md-5">
+            <div class="order-address">
+            <div class="billingAdress">
+                <div class="add">ĐỊA CHỈ GIAO HÀNG</div>
+                <div class="Info">
+                    <hr>
+                    <div class="name">Trần Ngọc Phương Mai</div>
+                    <div class="role">125 Thống Nhất, thành phố Buôn Mê Thuột, tỉnh Đắk Lắk</div>
+                    <div class="text">meimeiz&#64;gmail.com</div>
+                    <div class="text">0123-456-868</div>
+                </div>
+                <a class="change-add">Chỉnh sửa địa chỉ</a>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <div class="row bottom">
+        <div class="head">
+            <div class="in">Đơn hàng gần đây</div>
+            <div class="view"><a>Xem tất cả</a></div>
+        </div>
+        <div class="tab table-responsive ">
+            <table id="orderTable" >
+                <tr>
+                    <th>Mã đơn hàng</th>
+                    <th>Ngày</th>
+                    <th>Thành tiền</th>
+                    <th>Tình trạng</th>
+                    <th></th>
+                </tr>
+                <tr *ngFor="let item of orderData">
+                    <td>{{ item.id }}</td>
+                    <td>{{ item.date }}</td>
+                    <td>{{ item.total }}</td>
+                    <td>{{ item.status }}</td>
+                    <td><a (click)="openOrderDetail()">Xem chi tiết</a></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>

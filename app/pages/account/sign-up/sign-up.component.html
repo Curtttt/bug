@@ -1,0 +1,84 @@
+<div class="container-fluid bg">
+    <div class="row-col p-5 box_width">
+        <div class="col vstack box_signup">
+            <form action="" method="post" [formGroup]="formSignup" (submit)="onSignup()">
+                <div class="pb-4">
+                    <h3 class="text-nowrap">Đăng ký</h3>
+                </div>
+                <div>
+                    <!-- Họ và tên -->
+                    <input style="width: 90%" type="text" placeholder="Họ và Tên" formControlName="fullname">
+                    <hr>
+                    <div *ngIf="f['fullname'].touched && f['fullname'].errors">
+                        <small *ngIf="f['fullname'].errors['required']" class="help-block">Họ tên không được bỏ
+                            trống</small>
+                    </div>
+                </div>
+                <div>
+                    <!-- Email -->
+                    <input style="width: 90%" type="text" placeholder="Email" formControlName="username">
+                    <hr>
+                    <div *ngIf="f['username'].touched && f['username'].errors">
+                        <small *ngIf="f['username'].errors['required']" class="help-block">Email không được bỏ
+                            trống</small>
+                        <small *ngIf="f['username'].errors['email']" class="help-block">Email không hợp lệ</small>
+                        <small *ngIf="f['username'].errors['minlength']" class="help-block">Email phải ít nhất 12 ký
+                            tự</small>
+                    </div>
+                </div>
+                <div>
+                    <!-- mật khẩu -->
+                    <div class="hstack">
+                        <input [type]="changetype?'password':'text'" placeholder="Mật khẩu" formControlName="password">
+                        <span (click)="viewpassword()" class="ms-auto">
+                            <i [ngClass]="visible?'fa-regular fa-eye fa-sm':'fa-regular fa-eye-slash fa-sm'">
+                            </i>
+                        </span>
+                    </div>
+                    <hr>
+                    <div *ngIf="f['password'].touched && f['password'].errors">
+                        <small *ngIf="f['password'].errors['required']" class="help-block">Mật khẩu không được bỏ
+                            trống</small>
+                        <small *ngIf="f['password'].errors['minlength']" class="help-block">Mật khẩu phải ít nhất 6 kí
+                            tự</small>
+                    </div>
+                </div>
+                <div class="d-flex">
+                    <div class="form-check">
+                        <input class="form-check-input border border-black" type="checkbox" value="luuthongtin"
+                            id="flexCheckDefault">
+                        <label class="form-check-label text-nowrap" for="flexCheckDefault">
+                            Lưu thông tin
+                        </label>
+                    </div>
+                    <div class="ms-auto">
+                        <a href="#" class="non_textdecoration text-nowrap">Quên mật khẩu</a>
+                    </div>
+                </div>
+                <!-- đăng ký -->
+                <div class="pb-3 pt-3 text-center">
+                    <button type="submit" class="button_dangky p-1"
+                        [disabled]="f['username'].errors ||f['password'].errors || f['fullname'].errors ">ĐĂNG
+                        KÝ</button>
+                </div>
+                <hr>
+                <span class="d-flex justify-content-center">Hoặc</span>
+                <div class="d-flex justify-content-center my-4">
+                    <div class="d-flex gap-4">
+                        <button class="regis">
+                            <img src="\assets\socialLogin\facebook.svg" class="svg">
+                            Đăng nhập bằng Facebook
+                        </button>
+                        <button class="regis">
+                            <img src="\assets\socialLogin\google.svg" class="svg">
+                            Đăng nhập bằng Google
+                        </button>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <p>Bạn đã có tài khoản? <span routerLink="/sign-in" class="non_textdecoration font--weight-700">Đăng nhập</span></p>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

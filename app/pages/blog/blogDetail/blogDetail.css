@@ -1,0 +1,309 @@
+/* * {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+} */
+
+html,
+body {
+    scroll-behavior: smooth;
+    font-family: 'Montserrat', sans-serif !important;
+}
+
+.container::after {
+    content: "";
+}
+
+.col {
+    float: left;
+    margin: 50px;
+}
+
+.blog-map {
+    margin-bottom: 5px;
+    font-size: 16px;
+    color: #757575;
+    font-weight: 500;
+}
+
+.blog-map-item:hover {
+    color: #00b761;
+}
+
+.blog-map-icon {
+    color: #00b761;
+}
+
+.headings {
+    font-size: 30px;
+    text-transform: uppercase;
+    margin-top: 10px;
+}
+
+.meta {
+    margin-bottom: 10px;
+    text-align: right;
+    opacity: 100%;
+    white-space: nowrap;
+}
+
+.link {
+    margin-right: 15px;
+}
+
+.thumbnail {
+    width: 100%;
+    padding-top: 50%;
+}
+
+.post-banner {
+    width: 100%;
+    padding-top: 30%;
+    margin: 40px 0;
+}
+
+.content {
+    text-align: justify;
+    margin: 20px 0px 50px;
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+p {
+    margin: 8px 0;
+}
+
+.text-title {
+    text-transform: uppercase;
+}
+
+.stitle {
+    margin: 20px 0;
+    text-align: center;
+}
+
+.subtitle {
+    margin: 15px 0;
+}
+
+hr {
+    border: 1px solid rgb(211, 211, 211);
+}
+
+h3 {
+    margin: 10px 0;
+}
+
+ul {
+    padding-left: 50px;
+}
+
+ol {
+    margin-left: 50px;
+}
+
+li {
+    padding-left: 10px;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.comment-item {
+    margin-top: 30px;
+}
+
+.customer-name {
+    padding-bottom: 5px;
+}
+
+.comment-form {
+    margin-top: 20px;
+}
+
+.comment-content {
+    word-wrap: break-word;
+}
+
+::-webkit-input-placeholder {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.input-name {
+    width: 100%;
+    padding: 10px 10px;
+    margin: 5px 0;
+    border: 1px solid lightgray;
+    border-radius: 6px;
+    resize: none;
+}
+
+.input-content {
+    width: 100%;
+    height: 120px;
+    vertical-align: text-top;
+    padding: 10px 10px;
+    margin: 5px 0;
+    border: 1px solid lightgray;
+    border-radius: 6px;
+    resize: none;
+}
+
+.post-comments {
+    margin-top: 50px;
+}
+
+.comment {
+    display: flex;
+    width: 100%;
+    margin: 25px 0;
+    font-size: 12px;
+}
+
+.user-name {
+    font-weight: bold;
+    margin-right: 5px;
+    font-size: 18px;
+}
+
+.user-img {
+    aspect-ratio: calc(1);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+}
+
+.comment-time {
+    color: lightgray;
+    font-size: 18px;
+    margin-left: 5px;
+}
+
+.comment-detail {
+    width: 90%;
+    flex: 18;
+    padding-left: 20px;
+}
+
+.comment-content {
+    margin: 6px 0;
+    font-size: 18px;
+
+}
+
+.saved {
+    width: 20px;
+    height: 20px;
+    margin: 10px 10px 10px 0;
+    vertical-align: middle;
+    border: 1px solid lightgray;
+    border-radius: 3px;
+}
+
+.saved-text {
+    height: 15px;
+    vertical-align: middle;
+}
+
+.button-send {
+    font-size: inherit;
+    font-family: inherit;
+    color: white;
+    font-weight: bold;
+    border-radius: 50px;
+    padding: 15px 30px;
+    border: none;
+    background-color: black;
+    transition: 0.2s ease-in-out;
+    margin-bottom: 40px;
+    margin-top: 15px;
+    box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.4);
+}
+
+.button-load {
+    font-size: inherit;
+    font-family: inherit;
+    font-weight: bold;
+    color: black;
+    background-color: white;
+    border: 2px solid black;
+    border-radius: 50px;
+    padding: 12px 25px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.4);
+    margin-bottom: 40px;
+}
+
+button:hover {
+    cursor: pointer;
+    opacity: 0.8;
+    transition: 0.2s ease-in-out;
+}
+
+.related-title {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+    /* white-space: nowrap; */
+}
+
+.related-post {
+    background-color: white;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+.related-post:hover {
+    cursor: pointer;
+}
+
+.related-post-img {
+    width: 100%;
+    display: block;
+}
+
+.related-post-body {
+    padding: 20px;
+    font-size: 15px;
+}
+
+.related-post-heading {
+    font-size: 15px;
+    text-transform: uppercase;
+}
+
+.related-post-time {
+    margin-bottom: 10px;
+    color: #757575;
+}
+
+.related-post-desc {
+    margin: 10px 0px;
+    line-height: 1.4;
+    text-align: justify;
+}
+
+.view-more {
+    color: black;
+    font-size: 18px;
+    transition: 0.2s ease-in-out;
+}
+
+.view-more:hover {
+    transition: 0.2s ease-in-out;
+    opacity: 0.7;
+}
+
+a {
+    text-decoration: none !important;
+    font-size: 15px;
+    color: black !important;
+}
+
+@media screen and (max-width: 768px) {
+
+    html,
+    body {
+        width: 100vw;
+    }
+
+}

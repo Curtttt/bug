@@ -1,0 +1,183 @@
+/* * {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+} */
+
+
+a {
+    transition: 0.4s ease-in-out;
+    text-decoration: none;
+    color: black;
+}
+
+:root {
+    --primary_gray: #686874
+}
+
+body {
+    font-family: 'Montserrat', sans-serif !important;
+    font-size: 15px;
+    position: relative;
+}
+
+.container {
+    margin-top: 20px;
+}
+
+.row {
+    margin-left: 0;
+    margin-right: 0;
+    display: flex;
+}
+
+.row::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.col {
+    float: left;
+}
+
+
+.col-lg-3,
+.col-lg-9 {
+    padding: 0;
+}
+
+
+div.blog-list {
+    position: relative;
+    display: flex;
+    width: 80%;
+    justify-content: space-between;
+    margin-top: 25px;
+    margin-bottom: 40px;
+    margin-left: 15%;
+}
+
+a.title {
+    display: block;
+    color: black;
+    font-size: 22px;
+}
+
+a.title:hover,
+a.title:focus {
+    color: var(--primary_gray);
+}
+
+span.blog-date {
+    display: block;
+    color: #757575;
+    margin-bottom: 10px;
+    margin-top: 5px;
+}
+
+.new-blog .blog-list .blog-image a img {
+    width: 100%;
+}
+
+.blog-description {
+    text-align: justify;
+}
+
+/* highlight */
+
+.blog-highlight {
+    width: 70%;
+    position: sticky;
+}
+
+.highlight-title {
+    width: 270px;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.highlight-post:hover {
+    cursor: pointer;
+}
+
+.highlight-post-img {
+    width: 270px;
+    margin-bottom: 15px;
+}
+
+.highlight-post-body {
+    padding: 10px;
+    margin: 0px;
+    font-size: 15px;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    background-color: rgba(109, 109, 109, 0.2);
+    width: 270px;
+}
+
+.highlight-post-body:hover {
+    background-color: rgba(109, 109, 109, 0.6);
+}
+
+.highlight-post-heading {
+    font-size: 15px;
+    color: white;
+}
+
+.highlight-post-time {
+    color: white;
+}
+
+div.title {
+    width: 70%;
+}
+
+.col {
+    float: left;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.pagination {
+    margin: 30px auto;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pagination a {
+    width: 30px;
+    height: 30px;
+    color: black;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    margin: 0 5px;
+
+}
+
+.pagination a.active {
+    background-color: black;
+    color: white;
+}
+
+.pagination a:hover:not(.active) {
+    background-color: #ddd;
+}
+
+@media only screen and (max-width: 1000px) {
+    .feature-blog {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .blog-highlight {
+        width: 50%;
+    }
+
+}

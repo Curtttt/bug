@@ -1,0 +1,121 @@
+header{
+    background-color: black;
+    color: white;   
+}
+
+img{
+    width: 250px;
+    height: 70px;
+}
+
+a{
+    text-wrap: nowrap;
+    text-decoration: none;
+}
+
+.svg{
+    width: 25px;
+    height: 25px;
+}
+
+#account{
+    cursor: pointer;
+}
+
+#account:hover .sign{
+    display: block;
+}
+
+.badge{
+    position: relative;
+    display: inline;
+    margin-right: 5px;
+}
+
+.sign{
+    display: none;
+    position: absolute;
+    background-color: white;
+    margin-top: 2px;
+}
+
+.sign a{
+    display: block;
+    color: black;
+    text-decoration: none;
+    padding: 10px 15px;
+    padding-right: 40px;
+}
+
+.sign a:hover{
+    background-color: rgb(158, 155, 155);
+    color: white;
+}
+
+.nav-item{
+    margin: 0 20px;
+    font-weight: bold;
+    position: relative;
+    text-wrap: nowrap;
+}
+
+.nav-item::before{
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 2px;
+    background-color: white;
+    visibility: hidden;
+    transition: 0.2s ease-in-out;
+}
+
+.nav-item:hover::before{
+    width: 100%;
+    visibility: visible;
+    color: white;
+}
+
+.active_nav{
+    background-color: whitesmoke;
+    color: black;
+}
+
+input[id="search"]{
+    border: none;
+    color: white;
+    width: calc(70vw);
+    max-width: 400px;
+    height: 40px;
+}
+
+input[id="search"]:focus{
+    outline: none;
+}
+
+input[id="search"]::placeholder, a{
+    color: white;
+}
+
+button[type="submit"]{
+    border-radius: 25px;
+    width: 70px;
+    font-weight: bold;
+    align-self: center;
+}
+
+.btn-glass, input[id="search"]{
+    background-color: transparent;
+    border: none;
+    border-radius: 4px;
+    color: white;
+}
+
+#line{
+    display: block;
+    background-color: white;
+    height: 1px;
+    width: 100%;
+}

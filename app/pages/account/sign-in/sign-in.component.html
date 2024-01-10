@@ -1,0 +1,76 @@
+<div class="container-fluid bg">
+    <div class="row-col p-5 box_width">
+        <div class="col vstack box_signin">
+            <form action="" method="post" [formGroup]="formLogin" (submit)="onLogin()">
+                <div class="pb-4">
+                    <h3>Đăng nhập</h3>
+                </div>
+                <div>
+                    <!-- Email -->
+                    <input style="width: 90%" type="text" placeholder="Email" formControlName="username" [(ngModel)]="customer.email"
+                        #email>
+                    <hr>
+                    <div *ngIf="f['username'].touched && f['username'].errors">
+                        <small *ngIf="f['username'].errors['required']" class="help-block">Email không được bỏ
+                            trống</small>
+                        <small *ngIf="f['username'].errors['email']" class="help-block">Email không hợp lệ</small>
+                    </div>
+                </div>
+                <div>
+                    <!-- mật khẩu -->
+                    <div class="hstack">
+                        <input style="width: 90%" [type]="changetype?'password':'text'" placeholder="Mật khẩu" formControlName="password"
+                            [(ngModel)]="customer.password" #password>
+                        <span (click)="viewpassword()" class="ms-auto">
+                            <i [ngClass]="visible?'fa-regular fa-eye fa-sm':'fa-regular fa-eye-slash fa-sm'">
+                            </i>
+                        </span>
+                    </div>
+                    <hr>
+                    <div *ngIf="f['password'].touched && f['password'].errors">
+                        <small *ngIf="f['password'].errors['required']" class="help-block">Mật khẩu không được bỏ
+                            trống</small>
+                    </div>
+                </div>
+                <div class="d-flex">
+                    <div class="form-check">
+                        <input class="form-check-input border border-black" type="checkbox" value="luuthongtin"
+                            id="flexCheckDefault">
+                        <label class="form-check-label" for="flexCheckDefault">
+                            Lưu thông tin
+                        </label>
+                    </div>
+                    <div class="ms-auto">
+                        <a href="#" class="non_textdecoration">Quên mật khẩu</a>
+                    </div>
+
+                </div>
+                <!-- đăng nhập -->
+                <div class="pb-3 pt-3 text-center">
+                    <button type="submit" class="button_dangnhap p-1"
+                        [disabled]="f['username'].errors ||f['password'].errors"
+                        (click)="findCustomer(email.value, password.value)">ĐĂNG NHẬP</button>
+                </div>
+                <div>
+                    <hr>
+                </div>
+                <div class="d-flex justify-content-center my-4">
+                    <div class="d-flex gap-4">
+                        <button class="login">
+                            <img src="\assets\socialLogin\facebook.svg" class="svg">
+                            Đăng nhập bằng Facebook
+                        </button>
+                        <button class="login" id="google-btn">
+                            <img src="\assets\socialLogin\google.svg" class="svg">
+                            Đăng nhập bằng Google
+                        </button>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <p>Bạn chưa có tài khoản? <span routerLink="/sign-up"
+                            class="non_textdecoration font--weight-700">Đăng ký</span></p>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

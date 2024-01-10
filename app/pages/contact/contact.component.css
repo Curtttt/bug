@@ -1,0 +1,32 @@
+body {
+    font-family: 'Montserrat';
+}
+#image-googleplay,
+#image-appstore {
+    width: 147.054px;
+    height: 45px;
+}
+
+.font--weight-600{
+    font-weight: 600;
+}
+.button_gui{
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    width: 300px; 
+    font-size: 18px; 
+    font-weight: 700;
+    background-color: lightgray;
+    color: black;
+    border: none;
+    border-radius: 30px;
+}
+
+.button_gui:hover{
+    background-color: gray;
+}
+.box_lienhe{
+    box-shadow: 4px 5px 4px 0px rgba(0, 0, 0, 0.25);
+}
+.text-error{
+    color: red;
+}

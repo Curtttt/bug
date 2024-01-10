@@ -1,0 +1,97 @@
+<div class="container">
+    <div class="row justify-content-around pt-5 pb-5">
+        <div class="col-lg-5 col-6-sm pb-2 border border-light-subtle rounded "
+            style="background-color: #F3F3F3; box-shadow: 4px 5px 4px  rgba(0, 0, 0, 0.25);">
+            <div class="gap-3">
+                <h3 class="mt-4 text-center font--weight-600">Địa chỉ</h3>
+                <iframe
+                    src="https://maps.google.com/maps?q=Vietnam+National+University+HCM,+University+of+Economics+and+Law&amp;t=&amp;z=13&amp;ie=UTF8&amp;iwloc=&amp;output=embed"
+                    width=100% height=300 allowfullscreen class="p-3"></iframe>
+            </div>
+            <div class="hstack gap-3 mt-2 ">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-geo-alt"
+                    viewBox="0 0 16 16">
+                    <path
+                        d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A31.493 31.493 0 0 1 8 14.58a31.481 31.481 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10" />
+                    <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4m0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6" />
+                </svg> 669 QL1A, khu phố 3, Thủ Đức, Thành phố Hồ Chí Minh
+            </div>
+            <div class="hstack gap-3">
+                <svg xmlns="http://www.w3.org/2000/svg" style="color: #000000;" width="20" height="20"
+                    fill="currentColor" class="bi bi-telephone-fill" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd"
+                        d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z" />
+                </svg>
+                <p class="m-0">1900 68 68 68</p>
+            </div>
+            <div class="hstack gap-3 ">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                    class="bi bi-envelope-fill" viewBox="0 0 16 16">
+                    <path
+                        d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555ZM0 4.697v7.104l5.803-3.558zM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757Zm3.436-.586L16 11.801V4.697l-5.803 3.546Z" />
+                </svg>
+                <p class="m-0">penzesilvergmail.com</p>
+            </div>
+            <div class="container-fluid pt-4">
+                <div class="row align-items-center justify-content-evenly">
+                    <div class="col-5">
+                        <img src="\assets\contact\GooglePlay.png" id="image-googleplay" class="img-fluid">
+                    </div>
+                    <div class="col-5">
+                        <img src="\assets\contact\AppStore.png" alt="" id="image-appstore" class="img-fluid">
+                    </div>
+                </div>
+            </div>
+            <div class="container p-4 mt-2 text-center">
+                <i class="fa-brands fa-facebook fa-2xl" style="color: #000000;"></i>
+                <i class="fa-brands fa-instagram fa-2xl mx-5" style="color: #000000;"></i>
+                <i class="fa-brands fa-twitter fa-2xl" style="color: #000000;"></i>
+            </div>
+        </div>
+        <div class="col-lg-5 col-6-sm border border-light-subtle rounded "
+            style="box-shadow: 4px 5px 4px 0px rgba(0, 0, 0, 0.25);">
+            <form action="" method="post" [formGroup]="formContact" (submit)="onSubmit()">
+                <h3 class="mt-4 mx-auto text-center font--weight-600">Liên hệ</h3>
+                <div class="w-75 p-2  mx-auto">
+                    <label for="name" class="form-label ">Họ tên</label>
+                    <input type="text" name="name" id="name"
+                        class="form-control border-light-subtle p-2 mb-2 border-opacity-50 rounded-4"
+                        formControlName="name">
+                    <div *ngIf="f['name'].touched && f['name'].errors">
+                        <small *ngIf="f['name'].errors['required']" class="text-error">Họ tên không được bỏ
+                            trống</small>
+                    </div>
+                </div>
+                <div class="w-75 p-2 mx-auto">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="text" name="email" id="email"
+                        class="form-control border-light-subtle p-2 mb-2 border-opacity-50 rounded-4 "
+                        formControlName="email">
+                    <div *ngIf="f['email'].touched && f['email'].errors">
+                        <small *ngIf="f['email'].errors['required']" class="text-error">Email không được bỏ
+                            trống</small>
+                        <small *ngIf="f['email'].errors['email']" class="text-error">Email không hợp lệ</small>
+                    </div>
+                </div>
+                <div class="w-75 p-2 mx-auto">
+                    <label for="address" class="form-label">Địa chỉ</label>
+                    <input type="text" name="address" id="address"
+                        class="form-control border-light-subtle p-2 mb-2 border-opacity-50 rounded-4"
+                        formControlName="address">
+                    <div *ngIf="f['address'].touched && f['address'].errors">
+                        <small *ngIf="f['address'].errors['required']" class="text-error">Địa chỉ không được bỏ
+                            trống</small>
+                    </div>
+                </div>
+                <div class="w-75 p-2 mx-auto">
+                    <label for="message" class="form-label">Lời nhắn</label>
+                    <textarea cols="20" rows="5" class="form-control border-light-subtle p-2 mb-2 border-opacity-50 rounded-4"></textarea>
+                </div>
+                <div class="pb-3">
+                    <button class="mx-auto d-grid  button_gui" type="submit"
+                        [disabled]="f['name'].errors || f['email'].errors || f['address'].errors">GỬI</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

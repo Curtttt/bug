@@ -1,0 +1,54 @@
+footer{
+    background-color: black; 
+    color: white;
+}
+
+a{
+    text-wrap: nowrap;
+    text-decoration: none;
+    color: white;
+}
+
+img{
+    width: 250px;
+    height: 70px;
+}
+
+.sub-line{
+    display: block;
+    background-color: white;
+    height: 1px;
+    width: 100%;
+    width: 6em;
+    height: 2px;
+    margin-bottom: 10px;
+}
+
+
+.ico{
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+}
+
+.card-ico{
+    margin-top: 9px;
+    width: 70px;
+    height: 35px;
+}
+
+.sz-auth{
+    width: 250px;
+    height: 100px;
+}
+
+button[type="submit"]{
+    border-radius: 25px;
+    width: 70px;
+    font-weight: bold;
+    align-self: center;
+}
+
+input[name="inf_promote"], textarea{
+    border-radius: 15px;
+}

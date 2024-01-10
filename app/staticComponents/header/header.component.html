@@ -1,0 +1,106 @@
+<header>
+    <div class="container-fluid py-2">
+        <div class="row row-cols-auto d-flex justify-content-center align-items-center">
+            <div class="col">
+                <a routerLink="home"><img class="img-fluid" src="\assets\header\logo.png"></a>
+            </div>
+            <div class="col px-6 align-content-center">
+                <div class="input-group border border-light rounded">
+                    <input type="text" class="ps-3" id="search" placeholder="Tìm kiếm">
+                    <button class="btn-glass" id="basic-addon2">
+                        <i class="fa-solid fa-magnifying-glass fa-xl" style="color: #ffffff;"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="col">
+                <div class="row mt-2">
+                    <div class="hstack gap-4">
+                        <a>
+                            <img src="\assets\header\noti.svg" class="svg">
+                            Thông báo
+                        </a>
+                        <a routerLink="cart">
+                            <div class="badge m-0">
+                                <img src="\assets\header\cart.svg" class="svg">
+                                @if (num > 0) {
+                                <span
+                                    class="position-absolute top-0 start-95 translate-middle badge rounded-pill bg-danger">
+                                    {{num}}
+                                    <span class="visually-hidden">items</span>
+                                </span>
+                                }
+                            </div>
+                            Giỏ hàng
+                        </a>
+                        <div id="account">
+                            <div class="text-nowrap">
+                                <img src="\assets\header\account.svg"class="svg">
+                                @if (isLoggedin) {
+                                    Xin chào, {{name}}!
+                                    <div class="sign z-3 fw-semibold">
+                                        <a routerLink="dashboard">Tài khoản của tôi</a>
+                                        <a (click)="signOut()">Đăng xuất</a>
+                                    </div>    
+                                    }
+                                @else {
+                                    Tài khoản
+                                    <div class="sign z-3 fw-semibold">
+                                        <a routerLink="sign-up">Đăng ký</a>
+                                        <a routerLink="sign-in">Đăng nhập</a>
+                                    </div>
+                                }
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="line"></div>
+    <nav class="navbar nav-pills navbar-expand-xl bg-black" data-bs-theme="dark">
+        <div class="container-fluid ">
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
+                aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="offcanvas offcanvas-end bg-black" tabindex="-1" id="offcanvasNavbar"
+                aria-labelledby="offcanvasNavbarLabel">
+                <div class="offcanvas-header bg-gradient">
+                    <h4 class="offcanvas-title fw-bold" id="offcanvasNavbarLabel">Mục lục</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body bg-transparent justify-content-center">
+                    <ul class="navbar-nav pe-3 d-flex">
+                        <li class="nav-item">
+                            <a class="nav-link" routerLink="products/all" routerLinkActive="active_nav">
+                                <span><img src="\assets\header\menu.svg"class="svg"></span>
+                                Danh mục sản phẩm</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" routerLink="home" routerLinkActive="active_nav">Trang chủ</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" routerLink="promotion" routerLinkActive="active_nav">Khuyến mãi</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" routerLink="blog" routerLinkActive="active_nav">Blog</a>
+                        </li>
+                        <li class="nav-item text-nowrap">
+                            <a class="nav-link" routerLink="about" routerLinkActive="active_nav">Về chúng tôi</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" routerLink="contact" routerLinkActive="active_nav">Liên hệ</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link">
+                                <img src="\assets\header\phone.svg" class="svg">
+                                19006868
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>

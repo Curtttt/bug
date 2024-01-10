@@ -1,0 +1,165 @@
+<div class="main d-flex flex-wrap justify-content-center gap-3 p-0 overflow-auto">
+    <form method="post" [formGroup]="checkoutaForm" (submit)="onCheckout()">
+        <h4>THÔNG TIN GIAO HÀNG</h4>
+        <div class="container" >
+            <div class="row">
+                <label class="p-0" for="name">Họ và tên</label>
+                <input formControlName="fullname" name="info" id="name" type="text" placeholder="Nhập họ và tên">
+                <div *ngIf="f['fullname'].touched && f['fullname'].errors">
+                    <small class="text-error" *ngIf="f['fullname'].errors['required']">Họ Tên không được để trống</small>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <label for="email">Email</label><br>
+                    <input formControlName="email" name="info" id="email" type="email" placeholder="Nhập email" >
+                    <div *ngIf="f['email'].touched && f['email'].errors">
+                        <small class="text-error" *ngIf="f['email'].errors['required']">Email không được bỏ trống</small>
+                        <small class="text-error" *ngIf="f['email'].errors['email']">Email không hợp lệ</small>
+                    </div>
+                </div>
+                <div class="col ms-2">
+                    <label for="phone">Số điện thoại</label><br>
+                    <input formControlName="phone" name="info" id="phone" type="tel" pattern="[0-9]{10}" placeholder="Nhập số điện thoại"
+                        >
+                        <div *ngIf="f['phone'].touched && f['phone'].errors">
+                            <small class="text-error" *ngIf="f['phone'].errors['required']">Số điện thoại không được bỏ trống</small>
+                        </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="hstack gap-2 p-0" [formGroup]="locationForm">
+                    <div>
+                        <label for="province">Tỉnh/thành phố</label><br>
+                        <select formControlName="provinceControl" id='province' (change)="districts_fil()" required>
+                            <option value="" disabled selected>Chọn tỉnh</option>
+                            @for (province of provinces_lst; track province.code) {
+                            <option value={{province.name}}>{{province.name}}</option>
+                            }
+                        </select>
+                    </div>
+                    <div>
+                        <label for="district">Quận/huyện</label><br>
+                        <select formControlName="districtControl" id="district" (change)="wards_fil()" required>
+                            <option value="" selected>Chọn thành phố</option>
+                            @if (districts_lst.length > 0){
+                            @for (district of districts_lst; track district.code) {
+                            <option value={{district.name}}>{{district.name}}</option>
+                            }
+                            }
+                        </select>
+                    </div>
+                    <div>
+                        <label for="ward">Phường/xã</label><br>
+                        <select formControlName="wardControl" id='ward' required>
+                            <option value="" selected>Chọn quận/huyện</option>
+                            @if (wards_lst.length > 0){
+                            @for (ward of wards_lst; track ward.code) {
+                            <option value={{ward.name}}>{{ward.name}}</option>
+                            }
+                            }
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <label class="p-0" for="address">Địa chỉ cụ thể</label>
+                <input name="info" type="text" id="address" placeholder="Nhập số nhà, đường, ấp, thôn,..." required>
+            </div>
+        </div>
+        <hr class="my-4">
+        <div>
+            <h5 class="mb-3">THÔNG TIN KHÁC</h5>
+            <label for="note" class="mb-2">Ghi chú</label><br>
+            <textarea name="info" id="note" rows="4"
+                placeholder="Ghi chú về đơn hàng, thời gian nhận hàng,..."></textarea>
+        </div>
+
+    </form>
+
+    <div class="order vstack gap-1 rounded-1 border border-secondary-subtle">
+        <p class="mb-0">Chi tiết thanh toán</p>
+        <table>
+            <tbody>
+
+            </tbody>
+        </table>
+        <table class="table bill">
+            <tbody>
+                <tr>
+                    <th>Tạm tính</th>
+                    <td>{{price_lst[0].toLocaleString("vi-VN")}}</td>
+                </tr>
+                <tr>
+                    <th>Giảm giá</th>
+                    <td>{{price_lst[1].toLocaleString("vi-VN")}}</td>
+                </tr>
+                <tr>
+                    <th>Phí vận chuyển</th>
+                    <td>Miễn phí</td>
+                </tr>
+                <tr>
+                    <th>Thành tiền</th>
+                    <td>{{price_lst[2].toLocaleString("vi-VN")}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <h5>Phương thức thanh toán</h5>
+        <ul class="list-group">
+            <li class="list-group-item">
+                <input class="form-check-input me-1" type="radio" name="payment" value="cod" id="cod" checked>
+                <label class="form-check-label stretched-link" for="cod">
+                    Thanh toán khi nhận hàng (COD)
+                    <span><img class="ico" src="/assets/payment/cod.png"></span>
+                </label>
+            </li>
+            <li class="list-group-item">
+                <input class="form-check-input me-1" type="radio" name="payment" value="momo" id="momo">
+                <label class="form-check-label stretched-link" for="momo">
+                    Momo
+                    <span><img class="ico" src="/assets/payment/momo.png"></span>
+                </label>
+            </li>
+            <li class="list-group-item">
+                <input class="form-check-input me-1" type="radio" name="payment" value="zalopay" id="zalopay">
+                <label class="form-check-label stretched-link" for="zalopay">
+                    Zalopay
+                    <span><img class="ico" src="/assets/payment/zalopay.png"></span>
+                </label>
+            </li>
+            <li class="list-group-item">
+                <input class="form-check-input me-1" type="radio" name="payment" value="napas" id="napas">
+                <label class="form-check-label stretched-link" for="napas">
+                    Thẻ ghi nợ nội địa (Napas)
+                    <span><img class="card-ico" src="/assets/payment/napas.jpeg"></span>
+                </label>
+            </li>
+            <li class="list-group-item">
+                <input class="form-check-input me-1" type="radio" name="payment" value="visa" id="visa">
+                <label class="form-check-label stretched-link" for="visa">
+                    Thẻ ghi nợ quốc tế (Visa)
+                    <span><img class="card-ico" src="/assets/payment/visa.jpeg"></span>
+                </label>
+            </li>
+        </ul>
+        <button type="submit" class="rounded-pill ord_btn fw-bold" data-bs-toggle="modal"
+            data-bs-target="#staticBackdrop" [disabled]="f['fullname'].errors || f['email'].errors || f['phone'].errors ">ĐẶT HÀNG</button>
+    </div>
+
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    ...
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>

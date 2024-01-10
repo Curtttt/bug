@@ -1,0 +1,205 @@
+<div class="container d-flex-column pt-4 pb-3">
+    <div class="d-flex flex-wrap align-items-center">
+        <div class="d-flex align-items-center">
+            @if (img_lst.length > 1) {
+            <div class="vstack">
+                <button (click)="switch_img('-')" class="choose_img">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="24" viewBox="0 0 25 24" fill="none">
+                        <path d="M19.5 15.5L12.5 8.5L5.5 15.5" stroke="#999999" stroke-width="1.5"
+                            stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </button>
+                @for (img of img_lst; track $index) {
+                <img [ngClass]="{'active_img': active_img($index)}" (click)="rend_img($index)" class="placeholder_img"
+                    [src]="img">
+                }
+                <button (click)="switch_img('+')" class="choose_img">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="24" viewBox="0 0 25 24" fill="none">
+                        <path d="M19.5 8.5L12.5 15.5L5.5 8.5" stroke="#999999" stroke-width="1.5" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                    </svg>
+                </button>
+            </div>}
+            <img style="height: 300px; margin: 10px 15px;" [src]="img">
+        </div>
+        <div class="d-flex-column">
+            <div class="d-flex align-items-center">
+                <h3 class="fw-bolder">{{product.ProductName}}</h3>
+                <div class="stockStatus ms-2">Còn hàng</div>
+            </div>
+            <div class="hstack gap-1 ">
+                <div class="star_icon">
+                    @for (star of filledStars(product.Rating); track $index) {
+                    <i class="fa-sharp fa-solid fa-star fa-sm" style="color: orange;"></i>
+                    }
+                </div>
+                <p style="font-size: x-small; margin: 0">{{keys.length}} đánh giá</p>
+            </div>
+            <div class="d-flex border-bottom my-3 pb-3 gap-1">
+                @if (product.OldPrice != null && product.OldPrice != "") {
+                    <span class="old_price order-1">{{product.OldPrice.toLocaleString("vi-VN")}}&#8363;</span>
+                    <div class="discountStatus rounded-pill order-3">{{calcSale(product.UnitPrice, product.OldPrice)}}% Off</div>
+                }
+                <span class="fw-semibold order-2">{{product.UnitPrice.toLocaleString("vi-VN")}}&#8363;</span>
+                
+            </div>
+            @if (sizeable) {
+            <div class="d-flex border-bottom justify-content-between">
+                <div class="d-flex mb-3">
+                    <p class="mb-0 me-2 fw-bold" style="font-size:12px">Chọn kích cỡ:</p>
+                    <div class="hstack gap-2">
+                        <button class="size">12</button>
+                        <button class="size">13</button>
+                    </div>
+                </div>
+                <p class="guide">Cách đo size nhẫn</p>
+            </div>
+            }
+            <div class="d-flex border-bottom my-3 pb-3">
+                <div
+                    class="d-flex rounded-pill border border-secondary-subtle justify-content-between align-items-center">
+                    <button [disabled]="num == 1" type="button" class="sl_btn" (click)="sl('-')">
+                        <i class="fa-solid fa-minus fa-xs ps-2" style="color: #000000;"></i>
+                    </button>
+                    <span class="mx-4">{{num}}</span>
+                    <button type="button" class="sl_btn" (click)="sl('+')">
+                        <i class="fa-solid fa-plus fa-xs pe-2" style="color: #000000;"></i>
+                    </button>
+                </div>
+                <button (click)="savetoCart(product)" type="submit" id="checkout" class="mx-3 text-nowrap">Thêm vào giỏ hàng
+                    <span class="ms-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor"
+                            class="bi bi-handbag" viewBox="0 0 16 16">
+                            <path
+                                d="M8 1a2 2 0 0 1 2 2v2H6V3a2 2 0 0 1 2-2m3 4V3a3 3 0 1 0-6 0v2H3.36a1.5 1.5 0 0 0-1.483 1.277L.85 13.13A2.5 2.5 0 0 0 3.322 16h9.355a2.5 2.5 0 0 0 2.473-2.87l-1.028-6.853A1.5 1.5 0 0 0 12.64 5zm-1 1v1.5a.5.5 0 0 0 1 0V6h1.639a.5.5 0 0 1 .494.426l1.028 6.851A1.5 1.5 0 0 1 12.678 15H3.322a1.5 1.5 0 0 1-1.483-1.723l1.028-6.851A.5.5 0 0 1 3.36 6H5v1.5a.5.5 0 1 0 1 0V6z" />
+                        </svg>
+                    </span>
+                </button>
+                <svg (click)="fav()" [ngClass]="{'fill_red': fav_}" width="53" height="52" viewBox="0 0 53 52"
+                    fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="0.5" width="52" height="52" rx="26" fill="black" fill-opacity="0.1" />
+                    <path
+                        d="M26.4996 33.5451C9.83328 24.3333 21.4999 14.3333 26.4996 20.6567C31.4999 14.3333 43.1666 24.3333 26.4996 33.5451Z"
+                        stroke="black" stroke-width="1.5" />
+                </svg>
+            </div>
+            <div class="sub_vstack m-0">
+                <p class="mb-0 me-2 fw-semibold" style="font-size:12px">Danh mục: <span
+                        class="fw-normal">{{category}}</span></p>
+            </div>
+            <div class="sub_vstack">
+                <p class="mb-0 me-2 fw-normal" style="font-size:13px">Chia sẻ:</p>
+                <div class="hstack gap-2">
+                    <i class="fa-brands fa-facebook" style="color: #000000;"></i>
+                    <i class="fa-brands fa-twitter" style="color: #000000;"></i>
+                    <i class="fa-brands fa-pinterest-p" style="color: #000000;"></i>
+                    <i class="fa-brands fa-instagram" style="color: #000000;"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="vstack">
+        <div class="sub_vstack pb-0 border-bottom gap-3 justify-content-center">
+            <p (click)="changeTab('description')" class="detail" [ngClass]="{'active_tab': isClicked1}">Mô tả chi tiết
+            </p>
+            <p (click)="changeTab('review')" class="detail" [ngClass]="{'active_tab': isClicked2}">Đánh giá của khách
+                hàng
+            </p>
+        </div>
+        <div class="row justify-content-between">
+            <div class="col">
+                <div class="vstack px-3">
+                    @if (tab == "description"){
+                    <p>Trọng lượng tham khảo: </p>
+                    <p>Chất liệu: Bạc</p>
+                    <p>Hình dạng đá: </p>
+                    <p>Danh mục: {{category}}</p>
+                    <p>{{product.Description}}</p>
+                    }
+                    @else {
+                    @if (keys.length > 0) {
+                    @for (key of keys; track $index) {
+                    <div class="d-flex border-bottom my-3 pb-3">
+                        <div class="vstack">
+                            <div class="d-flex justify-content-between">
+                                <div class="hstack gap-2">
+                                    <img src="/assets/cus_cmt/{{product.Review[key]['img']}}">
+                                    <div class="vstack">
+                                        <p class="fw-bold">{{product.Review[key]['name']}}</p>
+                                        <div class="hstack">
+                                            <div class="star_icon">
+                                                @for (star of filledStars(product.Review[key]['rating']); track $index)
+                                                {
+                                                <i class="fa-sharp fa-solid fa-star fa-sm" style="color: orange;"></i>
+                                                }
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p>{{product.Review[key]['time']}}</p>
+                            </div>
+                            <p class="mt-3">{{product.Review[key]['cmt']}}</p>
+                        </div>
+                    </div>
+                    }
+                    }
+                    }
+                </div>
+            </div>
+            <div class="col-4">
+                <img class="w-100" src="/assets/product-detail/placeholder.png">
+                <div class="row border rounded mt-4 p-3 w-100">
+                    <div class="col p-0">
+                        <div class="hstack gap-2">
+                            <img src="/assets/product-detail/price tag.svg">
+                            <div class="vstack">
+                                <p class="fw-bold">Giảm giá 50%</p>
+                                <p>Tiết kiệm 50% với voucher</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col p-0">
+                        <div class="hstack gap-2">
+                            <img src="/assets/product-detail/shipment.svg">
+                            <div class="vstack">
+                                <p class="fw-bold">Miễn phí vận chuyển</p>
+                                <p>Miễn phí vận chuyển hôm nay</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="vstack mt-4">
+        <h4 class="fw-bold text-center">Sản phẩm liên quan</h4>
+        <div class="container d-flex justify-content-center">
+            <div class="product" *ngFor="let p of related_products">
+                <div class="row">
+                    <img [routerLink]="['/products/', collection_route, p._id]" class="img_p" [src]="p.images['img1']">
+                </div>
+                <div class="row">
+                    <p [routerLink]="['/products/', collection_route, p._id]" class="font--size-14 mb-0"> {{p.ProductName}}</p>
+                </div>
+                <div class="row">
+                    <div class="col-9">
+                        <p class="font--size-13 font--weight-600 mb-0" id="price">
+                            {{p.UnitPrice.toLocaleString("vi-VN")}} </p>
+                        <div class="star_icon">
+                            @for (star of filledStars(p.Rating); track $index) {
+                            <i class="fa-sharp fa-solid fa-star fa-sm" style="color: orange;"></i>
+                            }
+                        </div>
+                    </div>
+                    <div class="col-1 button_giohang text-center m-2">
+                        <svg (click)="savetoCart(p)" xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor"
+                            class="bi bi-handbag" viewBox="0 0 16 16">
+                            <path
+                                d="M8 1a2 2 0 0 1 2 2v2H6V3a2 2 0 0 1 2-2m3 4V3a3 3 0 1 0-6 0v2H3.36a1.5 1.5 0 0 0-1.483 1.277L.85 13.13A2.5 2.5 0 0 0 3.322 16h9.355a2.5 2.5 0 0 0 2.473-2.87l-1.028-6.853A1.5 1.5 0 0 0 12.64 5zm-1 1v1.5a.5.5 0 0 0 1 0V6h1.639a.5.5 0 0 1 .494.426l1.028 6.851A1.5 1.5 0 0 1 12.678 15H3.322a1.5 1.5 0 0 1-1.483-1.723l1.028-6.851A.5.5 0 0 1 3.36 6H5v1.5a.5.5 0 1 0 1 0V6z" />
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

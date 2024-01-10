@@ -1,0 +1,153 @@
+<div class="container-fluid mt-5" id="main">
+    <div id="content">
+        <div id="banner">
+            <img src="\assets\promotion\tet_banner.png">
+        </div>
+
+        <div id="promotion-content1">
+            <div class='row' id="promotion-nav">
+                <ul id="promo-menu">
+                    <li class="col-md-5">
+                        <a href="#promotion-content-main1">
+                            <div class="promo-nav-text">
+                                <p>BIG SALE</p>
+                                <p>10-30/12</p>
+                            </div>
+
+                        </a>
+                    </li>
+                    <li class="col-md-2">
+                        <a href="#promotion-content2"><img src="\assets\promotion\tet-icon.webp"
+                                class="promo-nav-ic"></a>
+                    </li>
+                    <li class="col-md-5">
+                        <a href="#sec2">
+                            <div class="promo-nav-text">
+                                <p>BE PRETTY CÙNG PENZE</p>
+                                <p>01-25/12</p>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div id="promotion-content-main1">
+
+                <div class="promo-section-white">
+
+                    <div class="promo-head reveal">
+                        <div class="promo-header">
+                            <div class="number">1</div>
+
+                            <div class="promo-title">TƯNG BỪNG KHUYẾN MÃI CUỐI NĂM</div>
+                        </div>
+                    </div>
+
+                    <div class="promo-display reveal2">
+                        <div class="promo-img">
+                            <img src="\assets\promotion\set.png">
+                        </div>
+
+                        <div class="promo-text">
+                            <p class="promo-text-title">Giảm ngay 400.000Đ </p>
+                            <p class="promo-text-title-sub">Cho đơn hàng từ 2.000.000Đ</p>
+                            <p class="promo-text-time">Hiệu lực: 0h00 12/12/2023 - 23h59p 31/12/2023</p>
+                            <p class="promo-text-condition">*Áp dụng cho mọi danh mục.</p>
+                            <div class="detail-btn">
+                                <a href="#">Xem danh mục</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="promo-display reveal2">
+                        <div class="promo-text">
+                            <p class="promo-text-title">MUA <span class="">2</span> TẶNG <span>1</span></p>
+                            <p class="promo-text-time">Hiệu lực: 0h00 12/12/2023 - 23h59p 31/12/2023</p>
+                            <p class="promo-text-condition">*Mua 2 sản phẩm thuộc 2 danh mục khác nhau được tặng 1 đôi
+                                khuyên tai.</p>
+
+                            <div class="detail-btn">
+                                <a href="#">Xem danh mục</a>
+                            </div>
+                        </div>
+
+                        <div class="promo-img">
+                            <img src="\assets\promotion\mua2tang1.png" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="promo-head reveal" id="sec2">
+                <div class="promo-header">
+                    <div class="number">2</div>
+
+                    <div class="promo-title">XINH ĐẸP MỖI NGÀY CÙNG PENZE</div>
+                </div>
+
+                <div class="promo-slide" id="promoSlide">
+                    <div *ngFor="let product of beprettyproducts" class="item-promo-list col-four">
+                        <div class="sale-badge">Sale <span class="sale-off">{{calcSale(product.UnitPrice, product.OldPrice)}}%</span></div>
+                        <img [routerLink]="['/products/be-pretty/', product._id]" [src]="product.images['img1']"
+                            class="tet-product-img" />
+                        <div class="tet-item-body">
+                            <p [routerLink]="['/products/be-pretty/', product._id]" class="item-title">{{
+                                product.ProductName }}</p>
+                            <p class="sale-price">{{ product.UnitPrice.toLocaleString('vi-VN') }} <span
+                                    class="price"><del>{{ product.OldPrice.toLocaleString('vi-VN') }}</del></span>
+                            </p>
+                            <div class="d-flex justify-content-between">
+                                <div>
+                                    @for (star of filledStars(product.Rating); track $index) {
+                                    <i class="fa-sharp fa-solid fa-star fa-sm" style="color: orange;"></i> }
+                                </div>
+                                <button class="cart-button">
+                                    <svg (click)="savetoCart(product)" xmlns="http://www.w3.org/2000/svg" width="11" height="11" fill="currentColor"
+                                        class="bi bi-handbag" viewBox="0 0 16 16">
+                                        <path
+                                            d="M8 1a2 2 0 0 1 2 2v2H6V3a2 2 0 0 1 2-2m3 4V3a3 3 0 1 0-6 0v2H3.36a1.5 1.5 0 0 0-1.483 1.277L.85 13.13A2.5 2.5 0 0 0 3.322 16h9.355a2.5 2.5 0 0 0 2.473-2.87l-1.028-6.853A1.5 1.5 0 0 0 12.64 5zm-1 1v1.5a.5.5 0 0 0 1 0V6h1.639a.5.5 0 0 1 .494.426l1.028 6.851A1.5 1.5 0 0 1 12.678 15H3.322a1.5 1.5 0 0 1-1.483-1.723l1.028-6.851A.5.5 0 0 1 3.36 6H5v1.5a.5.5 0 1 0 1 0V6z" />
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="detail-btn" style="text-align: center; margin-top: 5%;">
+                    <a href="#">Xem danh mục</a>
+                </div>
+            </div>
+        </div>
+        <div id="promotion-content2">
+            <img src="\assets\promotion\vietnamese new year apricot flower.png" class="tet-head-img">
+            <div class="promo-title">XUÂN AN KHANG - TẾT THỊNH VƯỢNG</div>
+
+            <div id="tet-product-list" class="reveal">
+                <div *ngFor="let product of tetproducts" class="tet-product-item col col-four">
+                    <div class="sale-badge">
+                        <p class="sale-title">Sale <span class="sale-off">{{calcSale(product.UnitPrice, product.OldPrice)}}%</span></p>
+                    </div>
+                    <img [routerLink]="['/products/hang-tet/', product._id]" [src]="product.images['img1']" alt=""
+                        class="tet-product-img" />
+                    <div class="tet-item-body">
+                        <p [routerLink]="['/products/hang-tet/', product._id]" class="item-title text-truncate">{{
+                            product.ProductName }}</p>
+                        <p class="sale-price">{{ product.UnitPrice.toLocaleString('vi-VN') }} <span
+                                class="price"><del>{{ product.OldPrice.toLocaleString('vi-VN') }}</del></span></p>
+                                <div class="d-flex justify-content-between">
+                                    <div>
+                                        @for (star of filledStars(product.Rating); track $index) {
+                                        <i class="fa-sharp fa-solid fa-star fa-sm" style="color: orange;"></i> }
+                                    </div>
+                                    <button class="cart-button">
+                                        <svg (click)="savetoCart(product)" xmlns="http://www.w3.org/2000/svg" width="11" height="11" fill="currentColor"
+                                            class="bi bi-handbag" viewBox="0 0 16 16">
+                                            <path
+                                                d="M8 1a2 2 0 0 1 2 2v2H6V3a2 2 0 0 1 2-2m3 4V3a3 3 0 1 0-6 0v2H3.36a1.5 1.5 0 0 0-1.483 1.277L.85 13.13A2.5 2.5 0 0 0 3.322 16h9.355a2.5 2.5 0 0 0 2.473-2.87l-1.028-6.853A1.5 1.5 0 0 0 12.64 5zm-1 1v1.5a.5.5 0 0 0 1 0V6h1.639a.5.5 0 0 1 .494.426l1.028 6.851A1.5 1.5 0 0 1 12.678 15H3.322a1.5 1.5 0 0 1-1.483-1.723l1.028-6.851A.5.5 0 0 1 3.36 6H5v1.5a.5.5 0 1 0 1 0V6z" />
+                                        </svg>
+                                    </button>
+                                </div>
+                    </div>
+                </div>
+            </div>
+        </div>

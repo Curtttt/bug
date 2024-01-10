@@ -1,0 +1,38 @@
+.font--weight-600{
+    font-weight: 600;
+}
+.font--weight-400{
+    font-weight: 400;
+}
+.font--size-18{
+    font-size: 18px;
+}
+.font--size-14{
+    font-size: 14px;
+}
+.camket_container{
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-evenly;
+}
+.camket_item{
+    display: flex;
+    flex-direction: column;
+}
+.card_container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+#img_member{
+    width: 100%;
+    height: 180px;
+}
+#cus_cmt{
+    width: 56px;
+    height: 56px;
+}
+.text--color-gray{
+    color: #666;
+}
